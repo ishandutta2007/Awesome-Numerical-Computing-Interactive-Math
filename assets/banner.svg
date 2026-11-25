@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="360">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#070a12" />
+    </linearGradient>
+
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#6366f1" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.2" />
+    </linearGradient>
+
+    <linearGradient id="waveGrad2" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.2" />
+      <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.2" />
+    </linearGradient>
+
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Glowing Effects -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.75" stroke-opacity="0.3" />
+      <circle cx="40" cy="0" r="1.5" fill="#475569" fill-opacity="0.5" />
+    </pattern>
+  </defs>
+
+  <style>
+    @keyframes pulseOrb {
+      0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.35; }
+      50% { transform: scale(1.15) translate(20px, -15px); opacity: 0.6; }
+    }
+    @keyframes waveFloat1 {
+      0%, 100% { transform: translateY(0px) scaleY(1); }
+      50% { transform: translateY(-12px) scaleY(1.08); }
+    }
+    @keyframes waveFloat2 {
+      0%, 100% { transform: translateY(0px) scaleY(1); }
+      50% { transform: translateY(14px) scaleY(0.95); }
+    }
+    @keyframes floatMath {
+      0%, 100% { transform: translateY(0px); opacity: 0.25; }
+      50% { transform: translateY(-8px); opacity: 0.55; }
+    }
+    @keyframes dashMove {
+      to { stroke-dashoffset: -100; }
+    }
+    .orb1 { animation: pulseOrb 8s ease-in-out infinite; transform-origin: 200px 100px; }
+    .orb2 { animation: pulseOrb 10s ease-in-out infinite reverse; transform-origin: 1000px 250px; }
+    .wave1 { animation: waveFloat1 6s ease-in-out infinite; transform-origin: center; }
+    .wave2 { animation: waveFloat2 7s ease-in-out infinite; transform-origin: center; }
+    .math-sym { animation: floatMath 5s ease-in-out infinite; font-family: monospace, serif; }
+    .streamer { stroke-dasharray: 8 12; animation: dashMove 12s linear infinite; }
+  </style>
+
+  <!-- Background Base -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+  <rect width="100%" height="100%" fill="url(#grid)" />
+
+  <!-- Dynamic Glowing Orbs in Background -->
+  <circle class="orb1" cx="220" cy="110" r="140" fill="#38bdf8" filter="url(#glow)" />
+  <circle class="orb2" cx="980" cy="220" r="160" fill="#a855f7" filter="url(#glow)" />
+  <circle cx="600" cy="320" r="100" fill="#6366f1" opacity="0.2" filter="url(#glow)" />
+
+  <!-- Ambient Dynamic Floating Math Symbols in Background (Low opacity so title stays crisp) -->
+  <g fill="#94a3b8" font-size="28" font-weight="600">
+    <text class="math-sym" x="90" y="80" style="animation-delay: 0s;">∫ f(x)dx</text>
+    <text class="math-sym" x="140" y="300" style="animation-delay: 1.5s;">λ = det(A - λI)</text>
+    <text class="math-sym" x="1030" y="90" style="animation-delay: 2s;">∇ × B = μ₀J</text>
+    <text class="math-sym" x="960" y="310" style="animation-delay: 3s;">e^{iπ} + 1 = 0</text>
+    <text class="math-sym" x="520" y="60" style="animation-delay: 0.8s;">∑_{k=1}^n k²</text>
+  </g>
+
+  <!-- Dynamic Wave Paths (Oscillations representing Numerical Analysis & Waves) -->
+  <path class="wave1" d="M -50 270 Q 250 180, 550 260 T 1150 230 T 1300 270" fill="none" stroke="url(#waveGrad1)" stroke-width="4" filter="url(#softGlow)" />
+  <path class="wave2" d="M -50 290 Q 300 350, 650 270 T 1250 290" fill="none" stroke="url(#waveGrad2)" stroke-width="3" filter="url(#softGlow)" />
+  <path class="streamer" d="M 0 240 C 300 160, 800 320, 1200 210" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.4" />
+
+  <!-- Central Content (High contrast, clearly in foreground) -->
+  <g text-anchor="middle">
+    <!-- Top Super-heading Tag -->
+    <g transform="translate(600, 75)">
+      <rect x="-190" y="-18" width="380" height="36" rx="18" fill="url(#badgeGrad)" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.8" />
+      <circle cx="-165" cy="0" r="6" fill="#10b981" />
+      <text x="5" y="5" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">
+        ⚡ CURATED COMPUTATIONAL ECOSYSTEM
+      </text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="600" y="165" fill="url(#textGrad)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="44" font-weight="900" letter-spacing="-0.5" filter="url(#softGlow)">
+      Awesome Numerical Computing
+    </text>
+    <text x="600" y="215" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="36" font-weight="800" letter-spacing="-0.5">
+      &amp; Interactive Math
+    </text>
+
+    <!-- Subtitle / Value proposition -->
+    <text x="600" y="260" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="500" letter-spacing="0.2">
+      Computer Algebra Systems (CAS) • Matrix Engines • 2D/3D Graphing • Scientific Simulation
+    </text>
+
+    <!-- Feature Pills in Foreground -->
+    <g transform="translate(600, 305)">
+      <!-- Pill 1 -->
+      <g transform="translate(-270, 0)">
+        <rect x="-65" y="-14" width="130" height="28" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.5" />
+        <text x="0" y="5" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">📊 SaaS &amp; Cloud</text>
+      </g>
+      <!-- Pill 2 -->
+      <g transform="translate(-90, 0)">
+        <rect x="-75" y="-14" width="150" height="28" rx="14" fill="#1e293b" stroke="#818cf8" stroke-width="1" stroke-opacity="0.5" />
+        <text x="0" y="5" fill="#a5b4fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">⚡ High-Perf OSS</text>
+      </g>
+      <!-- Pill 3 -->
+      <g transform="translate(95, 0)">
+        <rect x="-70" y="-14" width="140" height="28" rx="14" fill="#1e293b" stroke="#c084fc" stroke-width="1" stroke-opacity="0.5" />
+        <text x="0" y="5" fill="#e879f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">📐 Symbolic CAS</text>
+      </g>
+      <!-- Pill 4 -->
+      <g transform="translate(270, 0)">
+        <rect x="-65" y="-14" width="130" height="28" rx="14" fill="#1e293b" stroke="#34d399" stroke-width="1" stroke-opacity="0.5" />
+        <text x="0" y="5" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">📈 2D/3D Viz</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Border Frame -->
+  <rect x="1" y="1" width="1198" height="358" rx="12" fill="none" stroke="#334155" stroke-width="1.5" stroke-opacity="0.5" />
+</svg>
